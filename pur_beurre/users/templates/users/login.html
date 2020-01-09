@@ -18,7 +18,9 @@
         {% endif %}
 
         {% if user.is_authenticated %}
-        Vous êtes connecté, bienvenue {{ user.username }} !
+        <h3>Vous êtes connecté, bienvenue {{ user.username }} !</h3>
+        <a href="{% url 'catalog:index' %}">Retourner à l'acceuil</a><br>
+        <a href="{% url 'profile' %}">Mon compte</a>
         {% else %}
         <form method="post" action=".">
         {% csrf_token %}
@@ -46,9 +48,6 @@
             <br>
             <div class="form-group">
                 <button class="btn btn-primary btn-xl mt-50" type="submit">Se connecter</button>
-            </div>
-            <div>
-                Mot de passe oublié ? <a href="{% url 'password_reset' %}">Réinitialiser votre mot de passe</a>
             </div>
         </form>
         {% endif %}
