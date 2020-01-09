@@ -64,3 +64,17 @@ def favorite(request):
         product = []
 
     return render(request, 'users/favorite.html', {'favorite': product})
+
+@login_required
+def change_password(request):
+    if request.method == 'POST':
+        form = PasswordChangeForm(user=request.user, data=request.POST)
+        if form.is_valid():
+            form.save()
+            update_session_auth_hash(request, form.user)
+            messages.success(request, 'Votre mot de passe a bien été modifié!')
+            return redirect('catalog:index')
+    else:
+        form = PasswordChangeForm(user=request.user)
+
+    return render(request, 'users/password_change_form.html', {'form': form})
