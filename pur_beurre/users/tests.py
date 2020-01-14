@@ -2,8 +2,7 @@
 from django.test import TestCase, client
 from django.urls import reverse
 from django.contrib.auth.models import User
-from django.shortcuts import redirect
-from django.contrib.auth import update_session_auth_hash
+
 
 
 # Create your tests here.

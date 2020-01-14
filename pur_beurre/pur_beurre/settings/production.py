@@ -20,8 +20,4 @@ EMAIL_HOST_USER = os.environ.get('EMAIL_USER')
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASS')
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-<<<<<<< HEAD
 DEFAULT_FROM_EMAIL = 'Purbeurre <noreply@purbeurre.com>'
-=======
-DEFAULT_FROM_EMAIL = 'Purbeurre Team <noreply@purbeurre.com>' 
->>>>>>> bb803e044397b6b3bf1d33fc0f1e9657403779e7
