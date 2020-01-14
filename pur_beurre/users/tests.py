@@ -2,6 +2,8 @@
 from django.test import TestCase, client
 from django.urls import reverse
 from django.contrib.auth.models import User
+from django.shortcuts import redirect
+from django.contrib.auth import update_session_auth_hash
 
 
 # Create your tests here.
@@ -29,3 +31,12 @@ class UserViewTests(TestCase):
         self.client.login(username='user', password='password')
         self.client.logout()
         self.assertRaises(KeyError, lambda: self.client.session['_auth_user_id'])
+
+    def test_change_password(self):
+        self.client.login(username='user', password='password')
+        response = self.client.post(reverse('change_form'),
+                                    {'old_password1': 'password',
+                                     'new_password1': 'test1234',
+                                     'new_password2': 'test1234'}
+                                    )
+        self.assertEqual(response.status_code, 302)

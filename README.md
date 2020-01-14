@@ -1,20 +1,23 @@
-<h1>Créez une plateforme pour amateurs de Nutella</h1>
+<h1>Améliorez un projet existant en Python</h1>
 
 <h2>Travail demandé</h2>
 
-La startup Pur Beurre, avec laquelle vous avez déjà travaillé, souhaite développer une plateforme web à destination de ses clients. Ce site permettra à quiconque de trouver un substitut sain à un aliment considéré comme "Trop gras, trop sucré, trop salé" (même si nous savons tous que le gras c’est la vie).
+Basez-vous sur l’un des projets que vous avez déjà réalisés dans ce parcours de formation ou dans votre carrière. Choisissez une fonctionnalité à ajouter. 
 
-Vous pouvez consulter le site à l'adresse suivante: 
+Le projet amélioré est le suivant : Créez une plateforme pour amateurs de Nutella.
+
+Vous pouvez consulter le projet initial à l'adresse suivante: 
 
 https://purbeurrep8.herokuapp.com/
 
-Compétences évaluées: 
+Les nouveautés:
 
-<ol>
-	<li>Développer une application proposant les fonctionnalités attendues par le client</li>
-	<li>Mettre en œuvre des tests d’intégration</li>
-	<li>Mettre en œuvre des tests unitaires</li>
- 	<li>Pérenniser son projet web en créant un plan de test</li>
-	<li>Produire un rapport de l’exécution des tests</li>
-</ol>
+<ul>
+	<li>Possibilité de changer son mot de passe pour un utilisateur déja identifé</li>
+	<li>Possibilité de réinitialiser son mot de passe via un email</li>
+</ul>
+
+Le projet amélioré est disponible à l'adresse suivante:
+
+http://159.89.155.128/
 
