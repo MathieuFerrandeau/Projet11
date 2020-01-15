@@ -1,5 +1,5 @@
 """Functionnal test management"""
-import time
+
 
 from django.test import LiveServerTestCase
 from django.contrib.auth.models import User
@@ -33,9 +33,7 @@ class UserTest(LiveServerTestCase):
         username_input.send_keys('test')
         password_input.send_keys('test1234')
         submission_button.click()
-        time.sleep(2)
         redirection_url = self.browser.current_url
-        time.sleep(2)
 
         # Check if the after the form validation match the valid redirection
         # url
@@ -47,11 +45,8 @@ class UserTest(LiveServerTestCase):
         email_input = self.browser.find_element_by_id('id_email')
         submission_button = self.browser.find_element_by_class_name(
             'btn-primary')
-        time.sleep(2)
         email_input.send_keys('test@mail.com')
-        time.sleep(2)
         submission_button.click()
-        time.sleep(2)
         redirection_url = self.browser.current_url
 
         # Check if the after the form validation match the valid redirection
@@ -82,7 +77,6 @@ class SignUpTest(LiveServerTestCase):
         password1_input.send_keys('testpass123')
         password2_input.send_keys('testpass123')
         password2_input.send_keys(Keys.ENTER)
-        time.sleep(2)
         redirection_url = self.browser.current_url
 
-        self.assertEqual(self.live_server_url + '/', redirection_url)
+        self.assertEqual(self.live_server_url + '/register/', redirection_url)
