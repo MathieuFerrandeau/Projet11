@@ -7,4 +7,4 @@ newrelic.png
 .coverage
 .coveragerc
 htmlcov/
-
+geckodriver.log
