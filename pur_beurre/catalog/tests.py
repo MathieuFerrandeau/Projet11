@@ -61,6 +61,10 @@ class DataTests(TestCase):
         response = self.client.get('/favorite/')
         self.assertEqual(response.status_code, 302)
 
+    def test_credits_page_return_200(self):
+        response = self.client.get('/credits/')
+        self.assertEqual(response.status_code, 200)
+
 
 
 
