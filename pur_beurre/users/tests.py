@@ -63,7 +63,7 @@ class UserViewTests(TestCase):
 
 
 
-class EmailTest(TestCase):
+class EmailTests(TestCase):
     def test_send_email(self):
         # Send message.
         mail.send_mail(
