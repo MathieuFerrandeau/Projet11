@@ -26,11 +26,14 @@ class UserViewTests(TestCase):
                                      'password2': 'password'}, follow=True)
         self.assertEqual(response.status_code, 200)
 
+
     def test_logout(self):
 
         self.client.login(username='user', password='password')
         self.client.logout()
+        response = self.client.get('/logout/')
         self.assertRaises(KeyError, lambda: self.client.session['_auth_user_id'])
+        self.assertEqual(response.status_code, 200)
 
     def test_change_password(self):
         self.client.login(username='user', password='password')
@@ -58,8 +61,8 @@ class UserViewTests(TestCase):
     def test_profile_view(self):
         self.client.login(username='user', password='password')
         response = self.client.get(reverse('profile'))
-
         self.assertEqual(response.status_code, 302)
+
 
 
 
