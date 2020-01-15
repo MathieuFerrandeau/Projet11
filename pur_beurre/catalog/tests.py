@@ -3,6 +3,7 @@ from django.test import TestCase, client
 from django.urls import reverse
 from django.contrib.auth.models import User
 from .models import Product, Category
+from .fill_db import Fill_database
 
 # Create your tests here.
 
@@ -64,6 +65,20 @@ class DataTests(TestCase):
     def test_credits_page_return_200(self):
         response = self.client.get('/credits/')
         self.assertEqual(response.status_code, 200)
+
+class Fill_databaseTest(TestCase):
+
+    def setup(self):
+        self.c = Fill_database()
+        self.c.create_db()
+
+    def test_create_categorie(self):
+        chocolat = Category.objects.filter(name='chocolat')
+        self.assertIsNotNone(chocolat)
+
+    def test_create_product(self):
+        product = Product.objects.filter(category=2)
+        self.assertIsNotNone(product)
 
 
 
