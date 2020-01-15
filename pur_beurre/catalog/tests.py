@@ -2,12 +2,13 @@
 from django.test import TestCase, client
 from django.urls import reverse
 from django.contrib.auth.models import User
-from .models import Product, Category, UserFavorite
+from .models import Product, Category
 
 # Create your tests here.
 
 
-class IndexPageTestCase(TestCase):
+class CatalogViewsTests(TestCase):
+
 
     def test_index_returns_200(self):
         response = self.client.get(reverse('catalog:index'))
@@ -16,19 +17,26 @@ class IndexPageTestCase(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertInHTML('<strong>DU GRAS, OUI, MAIS DE LA QUALITÉ !</strong>', html)
 
+    def test_credits_returns_200(self):
+        response = self.client.get(reverse('catalog:credits'))
+        self.assertEqual(response.status_code, 200)
 
 class DataTests(TestCase):
 
     def setUp(self):
-        chocolat = Category.objects.create(name='chocolat')
+        user = User.objects.create(username='user', password="password")
+        self.chocolat = Category.objects.create(name='chocolat')
 
-        Product.objects.create(name='Chocolat',
-                               category=chocolat,
+        product = Product.objects.create(id= 45623,
+                               name='Chocolat',
+                               category=self.chocolat,
                                brand='casino',
                                nutrition_grade='a',
                                picture='chocolat.jpeg',
                                nutrition_image='chocolatnutrigrade.com',
-                               url='www.chocolat.com')
+                               url='www.chocolat.com'
+                               )
+
 
     def test_search_returns_200(self):
         chocolat = str('Chocolat')
@@ -43,6 +51,19 @@ class DataTests(TestCase):
             'query': chocolat,
         })
         self.assertEqual(response.status_code, 302)
+
+    def test_detail_page_returns_200(self):
+        response = self.client.get('/substitute/45623/')
+        self.assertEqual(response.status_code, 200)
+
+    def test_save_favorite_returns_302(self):
+        self.client.login(username='user', password='password')
+        response = self.client.get('/favorite/')
+        self.assertEqual(response.status_code, 302)
+
+
+
+
 
 
 
