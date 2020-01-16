@@ -1,16 +1,18 @@
-import requests
+"""Update the Database"""
 import datetime
+import requests
 from django.db.utils import DataError, IntegrityError
 from catalog.models import Category, Product
+
 
 class Update_db():
     """Update the database"""
 
     def __init__(self):
         self.categories = ['Viandes', 'Poissons', 'Epicerie', 'Chocolats', 'Pates-a-tartiner',
-                  'Biscuits', 'Vins', 'Boissons-gazeuses', 'Yaourts', 'Pains', 'Glace',
-                  'Fromages-de-france', 'Pizzas', 'Snacks sucrés'
-                  ]
+                           'Biscuits', 'Vins', 'Boissons-gazeuses', 'Yaourts', 'Pains', 'Glace',
+                           'Fromages-de-france', 'Pizzas', 'Snacks sucrés'
+                           ]
 
     def update(self):
         for category in self.categories:
@@ -39,7 +41,7 @@ class Update_db():
                     nutrition_image = product["image_nutrition_small_url"]
                     timestamp = product["last_modified_t"]
                     last_modified_t = datetime.date.fromtimestamp(timestamp)
-                    openff_id = product["id"]                    
+                    openff_id = product["id"]
 
                 except KeyError:
                     pass
@@ -58,14 +60,14 @@ class Update_db():
                         product_search = Product.objects.get(openff_id=openff_id, name=name, url=url)
                         try:
                             Product.objects.filter(openff_id=openff_id).update(name=name,
-                                                                              category=new_category,
-                                                                              brand=brand,
-                                                                              nutrition_grade=nutrition_grade,
-                                                                              url=url,
-                                                                              picture=picture,
-                                                                              nutrition_image=nutrition_image,
-                                                                              last_modified_t=last_modified_t,
-                                                                              openff_id=openff_id)
+                                                                               category=new_category,
+                                                                               brand=brand,
+                                                                               nutrition_grade=nutrition_grade,
+                                                                               url=url,
+                                                                               picture=picture,
+                                                                               nutrition_image=nutrition_image,
+                                                                               last_modified_t=last_modified_t,
+                                                                               openff_id=openff_id)
                             product_search.refresh_from_db()
                             print("Le produit ", name, " a bien été mis a jour")
                         except KeyError:

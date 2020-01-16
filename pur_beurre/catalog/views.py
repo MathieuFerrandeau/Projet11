@@ -12,13 +12,6 @@ from django.contrib import messages
 from .models import Product, UserFavorite
 
 
-
-#logging.basicConfig(filename="logs/views.log",
- #                   filemode="w",
-  #                  format='%(asctime)s - %(message)s',
-   #                 datefmt='%d-%b-%y %H:%M:%S',
-    #                level=logging.INFO)
-
 # Create your views here.
 def index(request):
     """index view"""

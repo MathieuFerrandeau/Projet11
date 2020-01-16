@@ -10,7 +10,6 @@ from .fill_db import Fill_database
 
 class CatalogViewsTests(TestCase):
 
-
     def test_index_returns_200(self):
         response = self.client.get(reverse('catalog:index'))
         html = response.content.decode('utf8')
@@ -22,22 +21,22 @@ class CatalogViewsTests(TestCase):
         response = self.client.get(reverse('catalog:credits'))
         self.assertEqual(response.status_code, 200)
 
+
 class DataTests(TestCase):
 
     def setUp(self):
         user = User.objects.create(username='user', password="password")
         self.chocolat = Category.objects.create(name='chocolat')
 
-        product = Product.objects.create(id= 45623,
-                               name='Chocolat',
-                               category=self.chocolat,
-                               brand='casino',
-                               nutrition_grade='a',
-                               picture='chocolat.jpeg',
-                               nutrition_image='chocolatnutrigrade.com',
-                               url='www.chocolat.com'
-                               )
-
+        product = Product.objects.create(id=45623,
+                                         name='Chocolat',
+                                         category=self.chocolat,
+                                         brand='casino',
+                                         nutrition_grade='a',
+                                         picture='chocolat.jpeg',
+                                         nutrition_image='chocolatnutrigrade.com',
+                                         url='www.chocolat.com'
+                                         )
 
     def test_search_returns_200(self):
         chocolat = str('Chocolat')
@@ -66,9 +65,10 @@ class DataTests(TestCase):
         response = self.client.get('/credits/')
         self.assertEqual(response.status_code, 200)
 
+
 class Fill_databaseTest(TestCase):
 
-    def setup(self): # pragma: no cover
+    def setup(self):  # pragma: no cover
         self.c = Fill_database()
         self.c.create_db()
 
@@ -79,14 +79,3 @@ class Fill_databaseTest(TestCase):
     def test_create_product(self):
         product = Product.objects.filter(category=2)
         self.assertIsNotNone(product)
-
-
-
-
-
-
-
-
-
-    
-

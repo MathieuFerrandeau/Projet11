@@ -3,9 +3,9 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout, update_session_auth_hash
+from django.contrib.auth.forms import PasswordChangeForm
 from catalog.models import Product
 from .forms import RegisterForm, ConnexionForm
-from django.contrib.auth.forms import PasswordChangeForm
 
 
 def register(request):
@@ -31,7 +31,7 @@ def user_login(request):
         if form.is_valid():
             username = form.cleaned_data["username"]
             password = form.cleaned_data["password"]
-            user = authenticate(username=username, password=password)  # check if the data is correct
+            user = authenticate(username=username, password=password)  # check if data is correct
             if user:  # if the returned object is not None
                 login(request, user)  # connect the user
             else:  # otherwise an error will be displayed
@@ -66,8 +66,10 @@ def favorite(request):
 
     return render(request, 'users/favorite.html', {'favorite': product})
 
+
 @login_required
 def change_password(request):
+    """Change password view"""
     if request.method == 'POST':
         form = PasswordChangeForm(user=request.user, data=request.POST)
         if form.is_valid():

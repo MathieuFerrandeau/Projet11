@@ -1,18 +1,20 @@
-import requests
+"""Fill the Database"""
 import datetime
+import requests
 from django.db.utils import DataError, IntegrityError
 from catalog.models import Category, Product
+
 
 class Fill_database():
     """Initializes the database"""
 
     def __init__(self):
         self.categories = ['Viandes', 'Poissons', 'Epicerie', 'Chocolats', 'Pates-a-tartiner',
-                  'Biscuits', 'Vins', 'Boissons-gazeuses', 'Yaourts', 'Pains', 'Glace',
-                  'Fromages-de-france', 'Pizzas', 'Snacks sucrés'
-                  ]
+                           'Biscuits', 'Vins', 'Boissons-gazeuses', 'Yaourts', 'Pains', 'Glace',
+                           'Fromages-de-france', 'Pizzas', 'Snacks sucrés'
+                           ]
 
-    def create_db(self): # pragma: no cover
+    def create_db(self):  # pragma: no cover
         for category in self.categories:
             new_category = Category.objects.create(name=category)
             params = {

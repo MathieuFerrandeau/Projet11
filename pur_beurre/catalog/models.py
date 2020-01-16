@@ -21,6 +21,7 @@ class Product(models.Model):
     last_modified_t = models.DateField(null=True, blank=True)
     openff_id = models.BigIntegerField(null=True, blank=True)
 
+
 class UserFavorite(models.Model):
     """UserFavorite table"""
     user_name = models.ForeignKey(User, on_delete=models.CASCADE)
