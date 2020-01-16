@@ -24,7 +24,6 @@ class UserViewTests(TestCase):
         self.assertEqual(response.status_code, 200)
 
     def test_logout(self):
-
         self.client.login(username='user', password='password')
         self.client.logout()
         response = self.client.get('/logout/')
