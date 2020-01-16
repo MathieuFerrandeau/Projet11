@@ -68,7 +68,7 @@ class DataTests(TestCase):
 
 class Fill_databaseTest(TestCase):
 
-    def setup(self):
+    def setup(self): # pragma: no cover
         self.c = Fill_database()
         self.c.create_db()
 

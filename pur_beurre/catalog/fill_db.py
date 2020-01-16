@@ -12,7 +12,7 @@ class Fill_database():
                   'Fromages-de-france', 'Pizzas', 'Snacks sucrés'
                   ]
 
-    def create_db(self):
+    def create_db(self): # pragma: no cover
         for category in self.categories:
             new_category = Category.objects.create(name=category)
             params = {
