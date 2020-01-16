@@ -1,10 +1,11 @@
 __pycache__
 pur_beurre/pur_beurre/staticfiles/
 pur_beurre/logs/
-env/
 newrelic.png
 .idea
 .coverage
 .coveragerc
 htmlcov/
 geckodriver.log
+livrables/
+env/
