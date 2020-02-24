@@ -32,12 +32,7 @@ class UserViewTests(TestCase):
         self.assertEqual(response.status_code, 200)
 
     def test_change_password(self):
-        self.client.login(username='user', password='password')
-        response = self.client.post(reverse('change_form'),
-                                    {'old_password1': 'password',
-                                     'new_password1': 'test1234',
-                                     'new_password2': 'test1234'}
-                                    )
+        response = self.client.get(reverse('change_form'))
         self.assertEqual(response.status_code, 302)
 
     def test_reset_password(self):
